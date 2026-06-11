@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <h1>Sparkling clean, every time ✨</h1>
+  <p>Premium car wash & detailing. Register to track your visits and payments.</p>
+  <div class="cta">
+    <a class="btn" href="{{ url_for('register') }}">Create account</a>
+    <a class="btn ghost" href="{{ url_for('login') }}">Log in</a>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Today's Offers</h2>
+  <ul class="offers">
+    {% for o in offers %}
+      <li><span class="badge">Offer</span> <strong>{{ o.title }}</strong> — {{ o.description }}</li>
+    {% else %}
+      <li>No current offers. Check back later!</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

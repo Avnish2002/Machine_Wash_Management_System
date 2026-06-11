@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="grid">
+  <section class="card form-card">
+    <h2>Add offer</h2>
+    <form method="post">
+      <label>Title</label>
+      <input name="title" required>
+      <label>Description</label>
+      <input name="description" required>
+      <button class="btn" type="submit">Add offer</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Existing offers</h2>
+    <ul class="offers admin">
+      {% for o in offers %}
+        <li>
+          <b>{{ o.title }}</b> — {{ o.description }}
+          <form class="inline-form right" method="post" action="{{ url_for('delete_offer', offer_id=o.id) }}">
+            <button class="btn danger" type="submit">Delete</button>
+          </form>
+        </li>
+      {% else %}
+        <li class="muted">No offers yet.</li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>
+{% endblock %}

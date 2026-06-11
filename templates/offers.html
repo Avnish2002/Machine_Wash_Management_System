@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Special offers</h2>
+  <ul class="offers">
+    {% for o in offers %}
+      <li><span class="badge">Offer</span> <b>{{ o.title }}</b> — {{ o.description }}</li>
+    {% else %}
+      <li class="muted">No offers at the moment.</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
